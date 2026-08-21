@@ -1,0 +1,15 @@
+Release: TODO-restored-v3
+
+This is the student version.
+
+Expected behaviour before the student writes any solution:
+
+    python check_progress.py
+    [INCOMPLETE] Task 1 - rectangular panel geometry: Complete make_panel() in geometry.py.
+
+The package contains 12 numbered TODO blocks:
+
+- geometry.py: TODO 1, TODO 2, TODO 3
+- channel.py: TODO 4, TODO 5, TODO 6
+- beamforming.py: TODO 7, TODO 8
+- metrics.py: TODO 9, TODO 10, TODO 11, TODO 12
