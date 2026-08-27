@@ -25,7 +25,11 @@ def focus_weights(
     Check: ``np.linalg.norm(weights)`` should be approximately 1.
     """
     # TODO 7: call steering_vector(), conjugate it and normalize it.
+    a=steering_vector(focus_point,element_positions,wavelength,include_pathloss)
+    a_conj = np.conjugate(a)
+    return a_conj/np.linalg.norm(a_conj)
     raise NotImplementedError("Complete focus_weights() in beamforming.py.")
+
 
 
 def multi_focus_weights(
@@ -48,5 +52,14 @@ def multi_focus_weights(
         raise ValueError("coefficients must have shape (L,).")
 
     # TODO 8: implement the multi-anchor combination described above.
+    M = len(element_positions)
+    combined_weights=np.zeros(M,dtype=complex)
+    for anchor,coeff in zip(anchor_points,coefficients):
+        sv=steering_vector(anchor,element_positions,wavelength)
+        combined_weights+=sv*coeff
+    norm = np.linalg.norm(combined_weights)
+    if norm > 0:
+        combined_weights /= norm
+    return combined_weights
     raise NotImplementedError("Complete multi_focus_weights() later.")
 
