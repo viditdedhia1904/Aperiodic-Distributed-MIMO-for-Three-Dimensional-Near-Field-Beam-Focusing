@@ -105,7 +105,7 @@ def field_on_points(
     for start in range(0, points.shape[0], chunk_size):
         stop = min(start + chunk_size, points.shape[0])
         point_chunk = points[start:stop]
-        distance_matrix = distances(points,element_positions)
+        distance_matrix = distances(point_chunk,element_positions)
         A = np.exp(-1j*k*distance_matrix)
         if include_pathloss:
             A=A/distance_matrix
@@ -118,6 +118,6 @@ def field_on_points(
         # 2. Form A = exp(-1j*k*distance_matrix).
         # 3. If requested, divide A by the distance matrix.
         # 4. Store A @ weights in field[start:stop].
-        raise NotImplementedError("Complete the chunk calculation in field_on_points().")
 
     return field
+    raise NotImplementedError("Complete the chunk calculation in field_on_points().")
